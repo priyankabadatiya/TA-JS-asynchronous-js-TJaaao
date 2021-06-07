@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TODO Application</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <main>
+        <h1>todos</h1>
+        <div class="input-box">
+            <div class="box">
+                <a href="#" id="toggleSelect"><i class="fas fa-chevron-down"></i></a>
+            </div>
+
+            <input type="text" placeholder="What needs to be done?" id="text" />
+        </div>
+        <ul></ul>
+        <div class="list-box">
+            <div class="all">All</div>
+            <div class="complete">Completed</div>
+            <div class="incomplete">Active</div>
+            <div class="clear"></div>
+        </div>
+        <div class="borders">
+            <div class="border border-1"></div>
+            <div class="border border-2"></div>
+        </div>
+    </main>
+
+    <script src="./index.js">
+        let baseURL = `https://sleepy-falls-37563.herokuapp.com/api/todo`
+            //GET
+        fetch(baseURL)
+            .then(res => res.json())
+            .then(console.log);
+
+        let data = {
+            "todo": {
+                "title": "Play guitar",
+            }
+        }
+
+        fetch(baseURL + '/609ccbe30c1d9900151817d1', {
+            method: 'PUT', // *GET, POST, PUT, DELETE, etc.
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data) // body data type must match "Content-Type" header
+        });
+    </script>
+</body>
+
+</html>
